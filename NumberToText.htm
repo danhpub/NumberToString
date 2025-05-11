@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Convert number to currency string</h1>
+<p>The value is rounded to 2 decimal digits before it is converted to string.</p>
+
+<script> 
+function convertValue()
+{
+	var number = document.getElementById("textToConvert").value ;
+	var resultCtrl = document.getElementById("result")
+    fetch('http://localhost:5206/api/converter/'+number) 
+      .then((res) => { 
+		  if (res.ok) {
+			resultCtrl.style.color = "black"
+		  }
+		  else
+		  {
+			resultCtrl.style.color = "red"
+		  }
+        return res.text() 
+      }).then((data) => { 
+		resultCtrl.innerHTML = data
+      }) 
+      .catch((err) =>
+	  {
+		console.debug(err)
+        resultCtrl.innerHTML = err
+	  }); 
+}
+</script> 
+ 
+  <input id="textToConvert" type="text" value="0" style="Width:20%"/> 
+  <button onclick='convertValue()'>Convert</button>
+
+<h4 id='resultHeader'>Result</h4>  
+  
+<p id='result'></p>
+  
+</body>
+</html>
