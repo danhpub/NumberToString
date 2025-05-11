@@ -1,17 +1,17 @@
 # Conversion of number to string.
 
 The application consists of two components.
-a. StringToNumber API
-b. Test page
+- StringToNumber REST API
+- Test page
 
 **API**
 
 The StringToNumber API is a .NET8, C#, minimal API project using dependancy injection and Mediator pattern to build a processing pipeline. The pipeline initially validates the request and then handles of the requests - processes it.
 
 The request pipeline comes through the following steges
-a. Api controller => NumberToTextApi.Controllers.ConverterController.cs
-b. Request validation => NumberToTextApi.Application.Validators.Converter.ConvertNumberQueryValidator.cs
-c. Request processing => NumberToTextApi.Application.Handlers.Converter.ConvertNumberHandler.cs
+- Api controller => NumberToTextApi.Controllers.ConverterController.cs
+- Request validation => NumberToTextApi.Application.Validators.Converter.ConvertNumberQueryValidator.cs
+- Request processing => NumberToTextApi.Application.Handlers.Converter.ConvertNumberHandler.cs
 
 The handler uses takes the query object containing the requested decimal value.
 The value is then split into the before decimal separator and after decimal separator. Each of them is then converted into appropriate string and joined together as main number and fraction part.
